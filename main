@@ -32,7 +32,7 @@ Loopgoto:Toggle({Title = "Teleporting",Default = false,Callback = function(Defau
 				end
 			end
 		end]]
-
+print("Target: "..TTarget)
 		
 		if game:GetService("ReplicatedStorage"):FindFirstChild("v9481487") then
 			TTarget = game:GetService("ReplicatedStorage"):FindFirstChild("v9481487").Value
