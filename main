@@ -1,3 +1,4 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kirvZZ/Infinity-Yield/main/source"))()
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/kirvZZ/SplixLib/main/source"))() -- Could Also Save It In Your Workspace And Do loadfile("Library.lua")()
 local Window = Library:New({Name = "dot-ware | v1.0.3", Accent = Color3.fromRGB(146, 0, 209)})
 --
@@ -14,7 +15,7 @@ local Players = game:GetService("Players")
 local UpdatePositionTime = 0.3
 local UpdatePositionRadius = 10
 local LoopG = false
-local TTarget = "Azoozi_55"
+local TTarget = nil
 local lchar = nil
 
 Loopgoto:Toggle({Title = "Teleporting",Default = false,Callback = function(Default) 
@@ -31,8 +32,11 @@ Loopgoto:Toggle({Title = "Teleporting",Default = false,Callback = function(Defau
 				end
 			end
 		end]]
+		
+		TTarget = _G.C_GUSER
 		lchar = Players:FindFirstChild(TTarget).Character
-
+		
+		
 		repeat
 			if Players:FindFirstChild(TTarget) then
 				print("Player found")
@@ -100,6 +104,9 @@ Jesus1:Toggle({Title = "Enable Jesus",Default = false,Callback = function(Defaul
 		end
 	end
 end})
+
+--
+Window:Initialize()
 
 --
 Window:Initialize()
