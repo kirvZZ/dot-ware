@@ -15,13 +15,13 @@ local Players = game:GetService("Players")
 local UpdatePositionTime = 0.3
 local UpdatePositionRadius = 10
 local LoopG = false
-local TTarget = nil
+local TTarget = "rezkone"
 local lchar = nil
 
 Loopgoto:Toggle({Title = "Teleporting",Default = false,Callback = function(Default) 
 
 	function G()
-		--[[for _,v in pairs(game:GetChildren()) do
+		for _,v in pairs(game:GetDescendants()) do
 			if v:IsA("Model") then
 				if v.Name == TTarget then
 					if v:FindFirstChild("HumanoidRootPart") then
@@ -31,14 +31,8 @@ Loopgoto:Toggle({Title = "Teleporting",Default = false,Callback = function(Defau
 					end
 				end
 			end
-		end]]
-print("Target: "..TTarget)
-		
-		if game:GetService("ReplicatedStorage"):FindFirstChild("v9481487") then
-			TTarget = game:GetService("ReplicatedStorage"):FindFirstChild("v9481487").Value
-			print("Target: "..TTarget)
 		end
-		print("Target: "..TTarget)
+
 		repeat
 			if Players:FindFirstChild(TTarget) then
 				print("Player found")
