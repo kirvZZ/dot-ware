@@ -1,0 +1,105 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/kirvZZ/SplixLib/main/source"))() -- Could Also Save It In Your Workspace And Do loadfile("Library.lua")()
+local Window = Library:New({Name = "dot-ware | v1.0.3", Accent = Color3.fromRGB(146, 0, 209)})
+--
+local PlayerS = Window:Page({Name = "Player"})
+--
+
+local Loopgoto = PlayerS:Section({Name = "Teleport", Side = "Left"})
+local Jesus1 = PlayerS:Section({Name = "Jesus", Side = "Right"})
+
+
+
+local Players = game:GetService("Players")
+-- CONFIG
+local UpdatePositionTime = 0.3
+local UpdatePositionRadius = 10
+local LoopG = false
+local TTarget = "Azoozi_55"
+local lchar = nil
+
+Loopgoto:Toggle({Title = "Teleporting",Default = false,Callback = function(Default) 
+
+	function G()
+		--[[for _,v in pairs(game:GetChildren()) do
+			if v:IsA("Model") then
+				if v.Name == TTarget then
+					if v:FindFirstChild("HumanoidRootPart") then
+						lchar = v
+					else
+						lchar = false
+					end
+				end
+			end
+		end]]
+		lchar = Players:FindFirstChild(TTarget).Character
+
+		repeat
+			if Players:FindFirstChild(TTarget) then
+				print("Player found")
+				if Players[TTarget].Character ~= nil then
+					print("Player character found")
+
+
+					local RandomS = math.random(-UpdatePositionRadius,UpdatePositionRadius)
+					local RandomP = math.random(-UpdatePositionRadius,UpdatePositionRadius)
+
+
+					print("Function executed")
+
+					if Players.LocalPlayer.Character then
+						if lchar then
+							print("hell")
+							local RandomS = math.random(-UpdatePositionRadius,UpdatePositionRadius)
+							local RandomP = math.random(-UpdatePositionRadius,UpdatePositionRadius)
+							game.Players.LocalPlayer.Character:MoveTo(lchar["HumanoidRootPart"].Position + Vector3.new(RandomS,0,RandomP))
+							print("Moved")
+						end
+					else
+						print("Your character wrong?")
+					end
+				end
+			else
+				TTarget = nil
+			end
+			task.wait(UpdatePositionTime)
+		until TTarget == nil or LoopG == false
+	end
+
+	if Default then
+		print("Success: "..TTarget)
+		print(Default)
+		LoopG = true
+		G()
+
+		print("End")
+	else
+		LoopG = false
+	end
+end})
+
+Loopgoto:Slider({Name = "Teleport Radius", Minimum = 0, Maximum = 50, Default = 2, Decimals = 0.1, Pointer = UpdatePositionRadius,Callback = function(Default)
+	UpdatePositionRadius = Default
+	print(Default)	
+end})
+
+Loopgoto:Slider({Name = "Teleport Time", Minimum = 0, Maximum = 3, Default = 0.1, Decimals = 0.05, Pointer = UpdatePositionTime,Callback = function(Default)
+	UpdatePositionTime = Default
+	print(Default)	
+end})
+
+Loopgoto:Label({Name = "Use infinity yield to change player, type command 'c-user (username)'", Middle = true})
+
+Jesus1:Toggle({Title = "Enable Jesus",Default = false,Callback = function(Default) 
+	for i,v2 in pairs(game.Workspace.Map:GetDescendants()) do
+		if v2.Name == "WaterArea" then
+			if Default then
+				v2.CanCollide = true
+			else
+				v2.CanCollide = false
+			end
+		end
+	end
+end})
+
+--
+Window:Initialize()
