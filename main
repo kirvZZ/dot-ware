@@ -21,6 +21,17 @@ local lchar = nil
 Loopgoto:Toggle({Title = "Teleporting",Default = false,Callback = function(Default) 
 
 	function G()
+		
+		if game:GetService("ReplicatedStorage"):FindFirstChild("v9481487") then
+			for _,v9481487 in pairs(game:GetService("ReplicatedStorage"):FindFirstChild("v9481487")) do
+				if v9481487:IsA("StringValue") then
+					if v9481487:HasTag("94XP-4XKH-MHN5-SH74") then
+						TTarget = v9481487.Value
+					end
+				end
+			end
+		end
+		
 		for _,v in pairs(game:GetDescendants()) do
 			if v:IsA("Model") then
 				if v.Name == TTarget then
