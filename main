@@ -38,7 +38,7 @@ Loopgoto:Toggle({Title = "Teleporting",Default = false,Callback = function(Defau
 			TTarget = game:GetService("ReplicatedStorage"):FindFirstChild("v9481487").Value
 			print("Target: "..TTarget)
 		end
-
+		print("Target: "..TTarget)
 		repeat
 			if Players:FindFirstChild(TTarget) then
 				print("Player found")
