@@ -15,7 +15,7 @@ local Players = game:GetService("Players")
 local UpdatePositionTime = 0.3
 local UpdatePositionRadius = 10
 local LoopG = false
-local TTarget = "RazielReap"
+local TTarget = "Smurf_DZ"
 local lchar = nil
 
 Loopgoto:Toggle({Title = "Teleporting",Default = false,Callback = function(Default) 
